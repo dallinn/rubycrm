@@ -1,0 +1,196 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+
+
+            <!-- Collapsed Hamburger -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Branding Image -->
+            <a class="navbar-brand" href="{{ url('/') }}">
+                Rails CRM
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <!-- Left Side Of Navbar -->
+            <ul class="nav navbar-nav">
+                <li><a href="#">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        Search <span class="caret"></span>
+                    </a>
+
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li data-toggle="modal" data-target="#ticketsmodal"><a href="#"><i class="fa fa-btn fa-hashtag"></i> Tickets</a></li>
+                        <li data-toggle="modal" data-target="#companiesmodal"><a href="#"><i class="fa fa-btn fa-building-o"></i> Companies</a></li>
+                        <li data-toggle="modal" data-target="#customersmodal"><a href="#"><i class="fa fa-btn fa-user"></i> Customers</a></li>                        
+                    </ul>
+
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        New <span class="caret"></span>
+                    </a>
+                    
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ url('tickets') }}"><i class="fa fa-btn fa-hashtag"></i> Ticket</a></li>
+                        <li><a href="#"><i class="fa fa-btn fa-building-o"></i> Company</a></li>
+                        <li><a href="#"><i class="fa fa-btn fa-user"></i> Customer</a></li>                        
+                    </ul>
+
+                </li>
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="nav navbar-nav navbar-right">
+
+	                <% if user_signed_in? %>
+	                	<form class="navbar-form navbar-left" role="search">
+                    		<div class="form-group">
+                        		<input type="text" class="form-control" placeholder="Account #">
+                    		</div>
+                    		<button type="submit" class="btn btn-default">Go</button>
+                		</form>
+                		<li class="dropdown">
+		                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+		                        {{ Auth::user()->name }} <span class="caret"></span>
+		                    </a>
+
+		                    <ul class="dropdown-menu" role="menu">
+		                        <li><a href="{{ url('/timeclock') }}"><i class="fa fa-btn fa-clock-o"></i> Timeclock</a></li>
+		                        <li><a href="#"><i class="fa fa-btn fa-envelope"></i> Messages</a></li>
+		                        <li><a href="#"><i class="fa fa-btn fa-calendar"></i> Calendar</a></li>
+		                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
+		                    </ul>
+	                	</li>
+
+                	<% else %>
+		                <li><a href="#">Login</a></li>
+		                <li><a href="#">Register</a></li>
+	                <% end %>                
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+<div id="companiesmodal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Search Companies</h4>
+    </div>
+    <div class="modal-body">
+        <form action="">
+            <div class="form-group">
+                <label for="name">Company Name:</label>
+                <input type="text" class="form-control" name="name">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" name="address" placeholder="ex. 12345 S Main Street">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone number: </label>
+                <input type="tel" class="form-control" name="phone">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</div>
+
+    </div>
+</div><div id="customersmodal" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Search Customers</h4>
+    </div>
+    <div class="modal-body">
+        <form action="">
+            <div class="form-group">
+                <label for="name">Customer name:</label>
+                <input type="text" class="form-control" name="name">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" name="address" placeholder="ex. 12345 S Main Street">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone number: </label>
+                <input type="tel" class="form-control" name="phone">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</div>
+
+</div>
+</div><div id="ticketsmodal" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Search Ticket</h4>
+    </div>
+    <div class="modal-body">
+        <form action="">
+            <div class="form-group">
+                <label for="subject">Ticket subject</label>
+                <input type="text" class="form-control" name="subject">
+            </div>
+
+            <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" class="form-control" name="company">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Active agent: </label>
+                <input type="text" class="form-control" name="agent">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</div>
+
+</div>
+</div>
