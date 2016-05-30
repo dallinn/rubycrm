@@ -18,6 +18,7 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
+            <% if user_signed_in? %>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         Search <span class="caret"></span>
@@ -44,6 +45,8 @@
                     </ul>
 
                 </li>
+                <li><%= link_to 'All Tickets', tickets_path  %></li>
+                <% end %>
             </ul>
 
             <!-- Right Side Of Navbar -->

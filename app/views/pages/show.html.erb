@@ -47,43 +47,6 @@
     </div>
 
     <div class="row">
-        <!-- <div class="col-md-4">
-            <form action="">
-                <div class="form-group">
-                    <h3>Add Customer</h3>
-                    <label for="firstname">First Name:</label>
-                    <input class="form-control" type="text" placeholder="First Name" name="firstname">
-                    <label for="lastname">Last Name:</label>
-                    <input class="form-control" type="text" placeholder="Last Name" name="lastname">
-                    <label for="dob">Date Of Birth:</label>
-                    <input class="form-control" type="date" name="dob">
-                    <label for="email">Email Address:</label>
-                    <input class="form-control" type="email" placeholder="Email" name="email">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Create</button>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-8">
-            <form action="">
-                <div class="form-group">
-                    <h3>Add Business</h3>
-                    <label for="firstname">First Name:</label>
-                    <input class="form-control" type="text" placeholder="First Name" name="firstname">
-                    <label for="lastname">Last Name:</label>
-                    <input class="form-control" type="text" placeholder="Last Name" name="lastname">
-                    <label for="dob">Date Of Birth:</label>
-                    <input class="form-control" type="date" name="dob">
-                    <label for="email">Email Address:</label>
-                    <input class="form-control" type="email" placeholder="Email" name="email">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Create</button>
-                </div>
-            </form>
-        </div> -->
-
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Support Tickets <a href="#" class="pull-right"><i class="fa fa-plus-circle" aria-hidden="true"></i> New Ticket</a></div>
@@ -99,31 +62,21 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="clickable-row" data-href='https://www.google.com/'>
-                          <th scope="row">1</th>
-                          <td>South Autos</td>
-                          <td>West office computer needs to be replaced</td>
-                          <td>2 hours ago</td>
-                          <td>Allen</td>
-                        </tr>
-                        <tr class="clickable-row" data-href='https://www.twitter.com/'>
-                          <th scope="row">2</th>
-                          <td>Joe's Paint and Tile</td>
-                          <td>Email changes, 3 added 2 removed</td>
-                          <td>3 hours ago</td>
-                          <td>Mackenzie</td>
-                        </tr>
-                        <tr class="clickable-row" data-href='https://www.youtube.com/'>
-                          <th scope="row">3</th>
-                          <td>Mountain Plumbing</td>
-                          <td>Workstation updates master ticket</td>
-                          <td>3 hours ago</td>
-                          <td>Allen, Joe, Pajeet</td>
-                        </tr>
-                      </tbody>
+                        <% @tickets.each do |ticket| %>
+                          <tr class="clickable-row" data-href='/tickets/<%= ticket.id %>'>
+                            <th scope="row"><%= ticket.id %></th>
+                            <td><%= ticket.company %></td>
+                            <td><%= ticket.title %></td>
+                            <td><%= time_ago_in_words(ticket.created_at) %></td>
+                            <td>TODO</td>
+                          </tr>
+                        <% end %>
+                      </tbody> 
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<%= javascript_include_tag 'front.js' %>
