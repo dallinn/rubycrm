@@ -65,8 +65,9 @@
 		                        <li><a href="{{ url('/timeclock') }}"><i class="fa fa-btn fa-clock-o"></i> Timeclock</a></li>
 		                        <li><a href="#"><i class="fa fa-btn fa-envelope"></i> Messages</a></li>
 		                        <li><a href="#"><i class="fa fa-btn fa-calendar"></i> Calendar</a></li>
-		                        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>  
-		                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
+                                <li><%= link_to destroy_user_session_path, :method => :delete do %>
+                                    <i class="fa fa-btn fa-sign-out"></i> Log out
+                                <% end %></li> 		                        
 		                    </ul>
 	                	</li>
 
