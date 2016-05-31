@@ -16,6 +16,7 @@ class TicketsController < ApplicationController
   # GET /tickets/new
   def new
     @ticket = Ticket.new
+    @companies = Company.all
   end
 
   # GET /tickets/1/edit
@@ -70,6 +71,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:title, :company, :body)
+      params.require(:ticket).permit(:company_id, :title, :body)
     end
 end

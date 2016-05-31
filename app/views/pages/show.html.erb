@@ -65,7 +65,7 @@
                         <% @tickets.each do |ticket| %>
                           <tr class="clickable-row" data-href='/tickets/<%= ticket.id %>'>
                             <th scope="row"><%= ticket.id %></th>
-                            <td><%= ticket.company %></td>
+                            <td><%= ticket.company.title %></td>
                             <td><%= ticket.title %></td>
                             <td><%= time_ago_in_words(ticket.created_at) %> ago</td>
                             <td>TODO</td>

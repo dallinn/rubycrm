@@ -12,6 +12,11 @@
   <tbody>
     <% @companies.each do |company| %>
       <tr>
+        <td><%= company.title %></td>
+        <td><%= company.address %></td>
+        <td> </td>
+      </tr>
+      <tr>
         <td><%= link_to 'Show', company %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
         <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>

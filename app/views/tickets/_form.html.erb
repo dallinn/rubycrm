@@ -5,10 +5,11 @@
       <%= f.label :title, 'Ticket subject' %>
       <%= f.text_field :title, class: 'form-control' %>
       
-      <%= f.label :company %>
-      <%= f.text_field :company, class: 'form-control' %>
+      <%= f.label :company_id %>
+      <% companies_array = Company.all.map { |company| [company.title, company.id] } %>
+      <%= f.select :company_id, options_for_select(companies_array), {}, {class: 'form-control'} %>
       <br>
-      <%= f.submit "Submit ticket", class: "btn btn-primary btn-block" %>
+      <%= f.submit "Submit ticket", class: 'form-control btn btn-primary' %>
 
   </div>
   <div class="col-md-8">
@@ -20,5 +21,7 @@
 
   </div>
 </div>
+
+
 
 
