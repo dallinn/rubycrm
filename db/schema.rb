@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530214439) do
+ActiveRecord::Schema.define(version: 20160531213653) do
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "title"
+    t.string   "address"
+    t.string   "city"
+    t.integer  "zip"
+    t.string   "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -21,12 +31,15 @@ ActiveRecord::Schema.define(version: 20160530214439) do
   end
 
   create_table "tickets", force: :cascade do |t|
+    t.integer  "company_id"
     t.string   "title"
     t.string   "company"
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "tickets", ["company_id"], name: "index_tickets_on_company_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
