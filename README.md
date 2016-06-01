@@ -13,5 +13,6 @@ This project demonstrates knowledge of MVC, OOP, Ruby, and Ruby on Rails, along 
 - [ ] Customer Views
 - [ ] Validation
 - [ ] Optimizaiton
+- [ ] Tests
 - [ ] Documentation
 - [ ] Deploy

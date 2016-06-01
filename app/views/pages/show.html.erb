@@ -35,11 +35,9 @@
 
                 <div class="panel-body">
                     <ul>
-                        <li><a href="#">RECENT HERE</a></li>
-                        <li><a href="#">RECENT HERE</a></li>
-                        <li><a href="#">RECENT HERE</a></li>
-                        <li><a href="#">RECENT HERE</a></li>
-                        <li><a href="#">RECENT HERE</a></li>
+                        <% @user_tickets.each do |ticket| %>
+                            <li><%= link_to ticket.title, ticket  %></li>
+                        <% end %>
                     </ul>
                 </div>
             </div>

@@ -1,5 +1,8 @@
-<%= form_for(@company) do |f| %>
-  <% if @company.errors.any? %>
+<div class="row">
+  <div class="col-md-4">    
+  
+    <%= form_for(@company, :html => { :class => "form-horizontal" } ) do |f| %>
+    <% if @company.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
 
@@ -10,8 +13,30 @@
       </ul>
     </div>
   <% end %>
+      <%= f.label :title, 'Company Name' %>
+      <%= f.text_field :title, class: 'form-control' %>
 
-  <div class="actions">
-    <%= f.submit %>
+      <%= f.label :address, 'Street Address' %>
+      <%= f.text_field :address, class: 'form-control' %>
+
+      <%= f.label :city %>
+      <%= f.text_field :city, class: 'form-control' %>
+
+      <%= f.label :zip %>
+      <%= f.text_field :zip, class: 'form-control' %>
+
+      <%= f.label :state %>
+      <%= f.text_field :state, value: 'UT', class: 'form-control' %>
+
+      
+      
+      <%= f.submit "Create company", class: 'form-control btn btn-primary' %>
+
+    <% end %>
+
   </div>
-<% end %>
+</div>
+
+
+
+
