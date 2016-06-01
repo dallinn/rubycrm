@@ -3,7 +3,7 @@
 <div class="row">
 	<h1><%= @ticket.title %> : Ticket # <%= @ticket.id %></h1>
 	<em>
-	<p><a href=""><%= @ticket.company.title %></a> - Created <%= @ticket.created_at.strftime('%B %d, %Y at %l:%M %p') %></p>
+	<p><%= link_to @ticket.company.title, @ticket.company %> - Created <%= @ticket.created_at.strftime('%B %d, %Y at %l:%M %p') %></p>
 
 	<% unless @ticket.created_at == @ticket.updated_at %>
 		<p>Last updated at <%= @ticket.updated_at.strftime('%B %d, %Y at %l:%M %p') %></p>

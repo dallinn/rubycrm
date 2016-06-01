@@ -5,6 +5,7 @@ class CreateTickets < ActiveRecord::Migration
       t.string :title
       t.string :company
       t.text :body
+      t.string :current_user
 
       t.timestamps null: false
     end

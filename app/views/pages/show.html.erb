@@ -68,7 +68,7 @@
                             <td><%= ticket.company.title %></td>
                             <td><%= ticket.title %></td>
                             <td><%= time_ago_in_words(ticket.created_at) %> ago</td>
-                            <td>TODO</td>
+                            <td><%= ticket.current_user %></td>
                           </tr>
                         <% end %>
                       </tbody> 

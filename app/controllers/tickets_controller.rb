@@ -16,7 +16,7 @@ class TicketsController < ApplicationController
   # GET /tickets/new
   def new
     @ticket = Ticket.new
-    @companies = Company.all
+    # @companies = Company.all
   end
 
   # GET /tickets/1/edit
@@ -27,6 +27,7 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
+    @ticket.current_user = current_user.first_name + ' ' + current_user.last_name
 
     respond_to do |format|
       if @ticket.save
