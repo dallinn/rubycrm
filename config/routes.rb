@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  
   root 'pages#show'
 
+  resources :tasks
   resources :posts
   resources :tickets
   resources :companies
