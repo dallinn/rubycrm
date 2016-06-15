@@ -35,7 +35,7 @@
 
                 <div class="panel-body">
                     <ul>
-                        <% @user_tickets.each do |ticket| %>
+                        <% current_user.tickets.each do |ticket| %>
                             <li><%= link_to ticket.title, ticket  %></li>
                         <% end %>
                     </ul>
@@ -66,7 +66,7 @@
                             <td><%= ticket.company.title %></td>
                             <td><%= ticket.title %></td>
                             <td><%= time_ago_in_words(ticket.created_at) %> ago</td>
-                            <td><%= ticket.current_user %></td>
+                            <td>asdf</td>
                           </tr>
                         <% end %>
                       </tbody> 
