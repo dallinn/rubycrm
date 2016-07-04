@@ -1,10 +1,14 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do  
   
   root 'pages#show'
 
   resources :tasks
   resources :posts
-  resources :tickets
+  
+  resources :tickets do
+    resources :notes
+  end
+
   resources :companies
   devise_for :users, :controllers => { registrations: 'registrations' }
 

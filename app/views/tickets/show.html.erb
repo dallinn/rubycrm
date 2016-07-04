@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-	<h1><%= @ticket.title %> : Ticket # <%= @ticket.id %></h1>
+	<h1><%= @ticket.title %> : Ticket # <%= @ticket.id %><%= link_to 'Add note', new_ticket_note_path(@ticket), class: 'btn btn-primary pull-right' %></h1>
 	<em>
 	<p><%= link_to @ticket.company.title, @ticket.company %> - Created <%= @ticket.created_at.strftime('%B %d, %Y at %l:%M %p') %></p>
 
@@ -9,14 +9,38 @@
 		<p>Last updated at <%= @ticket.updated_at.strftime('%B %d, %Y at %l:%M %p') %></p>
 	<% end %>
 	</em>
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+		    	<h3 class="panel-title">Ticket description</h3>
+		  	</div>
+			
+			<div class="panel-body">
+				<%= @ticket.body %>
+			</div>
 
-	<p><%= @ticket.body %></p>		
+			<div class="panel-footer">
+				<%= link_to 'Edit', edit_ticket_path(@ticket), class: 'btn btn-sm btn-warning' %> |
+				<%= link_to 'View all tickets', tickets_path, class: 'btn btn-sm btn-info' %>
+			</div>
+		</div>
+	</div>	
 
-	<%= link_to 'Edit', edit_ticket_path(@ticket), class: 'btn btn-warning' %> |
-	<%= link_to 'Back', tickets_path, class: 'btn btn-info' %>
+	<div class="col-md-6">
 
-	<div class="col-md-6 col-md-offset-3">
-	
+	<% @notes.each do |note| %>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+		    	<h3 class="panel-title">Note made on <%= note.created_at.strftime('%B %d, %Y at %l:%M %p') %></h3>                        
+		  	</div>
+
+		  	<div class="panel-body">
+		  		<p><%= note.body %></p>
+		  	</div>
+
+
+		</div>
+	<% end %>
 	</div>
 </div>	
 
