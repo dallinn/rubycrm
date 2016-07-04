@@ -1,20 +1,18 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
-  # GET /tickets
-  # GET /tickets.json
   def index
     @tickets = Ticket.all
   end
 
-  # GET /tickets/1
-  # GET /tickets/1.json
+ 
   def show
     @ticket = Ticket.find(params[:id])
-    @notes = @ticket.notes.order('id DESC')
+    @past_notes = @ticket.notes.order('id DESC')
+    @note = @ticket.notes.new
   end
 
-  # GET /tickets/new
+  
   def new
     @ticket = Ticket.new
     # @companies = Company.all
@@ -24,8 +22,6 @@ class TicketsController < ApplicationController
   def edit
   end
 
-  # POST /tickets
-  # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
     @ticket.user_id = current_user.id

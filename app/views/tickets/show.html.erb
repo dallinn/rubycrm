@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-	<h1><%= @ticket.title %> : Ticket # <%= @ticket.id %><%= link_to 'Add note', new_ticket_note_path(@ticket), class: 'btn btn-primary pull-right' %></h1>
+	<h1><%= @ticket.title %> : Ticket # <%= @ticket.id %></h1>		
+
+	<a href="#" id='new_note' class='btn btn-primary pull-right'>Add note</a>
+
 	<em>
 	<p><%= link_to @ticket.company.title, @ticket.company %> - Created <%= @ticket.created_at.strftime('%B %d, %Y at %l:%M %p') %></p>
 
 	<% unless @ticket.created_at == @ticket.updated_at %>
 		<p>Last updated at <%= @ticket.updated_at.strftime('%B %d, %Y at %l:%M %p') %></p>
 	<% end %>
+	<p>Ticket owned by: <%= @ticket.user.first_name %> <%= @ticket.user.last_name %></p>
 	</em>
+
 	<div class="col-md-6">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -28,7 +33,17 @@
 
 	<div class="col-md-6">
 
-	<% @notes.each do |note| %>
+	<%= form_for([@ticket, @note], html: { class: 'form-horizontal hidden', id: 'new_note_form' } ) do |f| %>
+	  <div class="form-group">
+	    <%= f.label :body %><br>
+	    <%= f.text_field :body %>
+	  </div>
+	  <div class="form-group">
+	    <%= f.submit %>
+	  </div>
+	<% end %>
+
+	<% @past_notes.each do |note| %>
 		<div class="panel panel-default">
 			<div class="panel-heading">
 		    	<h3 class="panel-title">Note made on <%= note.created_at.strftime('%B %d, %Y at %l:%M %p') %></h3>                        
