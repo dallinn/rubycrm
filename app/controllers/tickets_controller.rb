@@ -11,7 +11,7 @@ class TicketsController < ApplicationController
   # GET /tickets/1.json
   def show
     @ticket = Ticket.find(params[:id])
-    @notes = @ticket.notes
+    @notes = @ticket.notes.order('id DESC')
   end
 
   # GET /tickets/new
